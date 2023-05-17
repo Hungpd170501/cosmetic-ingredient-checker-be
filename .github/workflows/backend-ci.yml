@@ -18,9 +18,9 @@ jobs:
       postgres:
         image: postgres:14.1
         env:
-          POSTGRES_USER: ${{ env.POSTGRESQL_DB }}
-          POSTGRES_PASSWORD: ${{ env.POSTGRESQL_USER }}
-          POSTGRES_DB: ${{ env.POSTGRESQL_PASSWORD }}
+          POSTGRES_USER: ${{ env.POSTGRESQL_USER }}
+          POSTGRES_PASSWORD: ${{ env.POSTGRESQL_PASSWORD }}
+          POSTGRES_DB: ${{ env.POSTGRESQL_DB }}
         ports:
           - 5432:5432
         options: >-
