@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "cosmetic-ingredient-checker-be",
-      "image": "hungpd170501/cosmetic-ingredient-checker-be:latest",
+      "image": "hungpd170501/cosmetic-ingredient-checker-be:18.05.2023.19.09.45",
       "essential": true,
       "memory": 512,
       "portMappings": [
