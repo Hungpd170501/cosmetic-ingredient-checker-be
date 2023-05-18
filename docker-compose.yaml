@@ -1,6 +1,7 @@
 services:
 
-  postgres:
+  db:
+    container_name: postgres
     image: postgres
     environment:
       POSTGRES_USER: hungpd170501
@@ -15,6 +16,7 @@ services:
     restart: unless-stopped
 
   pgadmin:
+    container_name: pgadmin
     image: dpage/pgadmin4
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin@gmail.com}
@@ -28,9 +30,10 @@ services:
       - postgres
     restart: unless-stopped
     depends_on:
-      - postgres
+      - db
 
   sonarqube:
+    container_name: sonarqube
     image: sonarqube
     volumes:
       - sonarqube_conf:/opt/sonarqube/conf
@@ -45,6 +48,20 @@ services:
       - sonar.jdbc.username=sonar
       - sonar.jdbc.password=sonar
       - sonar.jdbc.url=jdbc:postgresql://postgres:5432/sonar
+
+  api:
+    container_name: cosmetic-ingredient-checker-be
+    image: hungpd170501/cosmetic-ingredient-checker-be
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/cosmetic-ingredient-checker
+    ports:
+      - "8088:8080"
+    networks:
+      - postgres
+    depends_on:
+      - db
+    restart: unless-stopped
+
 networks:
   postgres:
     driver: bridge
