@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CosmeticResponse {
-    private int productId;
+    private Long productId;
     private String name;
     private String description;
     private String image;
