@@ -1,25 +1,5 @@
-server:
-  port: 8080
-  error:
-    include-message: always
-    include-binding-errors: always
-
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/cosmetic-ingredient-checker
-    username: hungpd170501
-    password: password
-  jpa:
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: true
-        use_nationalized_character_data: true
-    show-sql: true
-
-logging:
-  level:
-    org:
-      hibernate: error
+    url: jdbc-secretsmanager:postgresql://awseb-e-ykimbrpgq3-stack-awsebrdsdatabase-pushioghcpm6.cyspfa2bcawq.ap-southeast-1.rds.amazonaws.com:5432/ebdb
+    username: dev/cosmetic/postgres
+    driver-class-name: com.amazonaws.secretsmanager.sql.AWSSecretsManagerPostgreSQLDriver
